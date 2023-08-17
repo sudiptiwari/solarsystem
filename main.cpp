@@ -111,7 +111,7 @@ void setup(void){
 	Image* sat = loadBMP("saturn.bmp");		satTexture = loadTexture(sat);		delete sat;
 	Image* ura = loadBMP("uranus.bmp");		uraTexture = loadTexture(ura);		delete ura;
 	Image* nep = loadBMP("neptune.bmp");	nepTexture = loadTexture(nep);		delete nep;
-	Image* plu = loadBMP("pluto.bmp");		pluTexture = loadTexture(plu);		delete plu;
+	//Image* plu = loadBMP("pluto.bmp");		pluTexture = loadTexture(plu);		delete plu;
 	Image* log = loadBMP("logo.bmp");		logTexture = loadTexture(log);		delete log;
 
 	//LIGHTING SETUP
@@ -145,7 +145,6 @@ void orbitalTrails(void){
 	glutWireTorus(0.001, sat.distance, 100.0, 100.0);
 	glutWireTorus(0.001, ura.distance, 100.0, 100.0);
 	glutWireTorus(0.001, nep.distance, 100.0, 100.0);
-	glutWireTorus(0.001, plu.distance, 100.0, 100.0);
 	glPopMatrix();
 }
 
@@ -272,12 +271,12 @@ void drawScene(void){
 	gluSphere(quadric, ear.radius, 20.0, 20.0);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
-	if (smallOrbitActive == 1){
+	/*if (smallOrbitActive == 1){
 		lun.drawSmallOrbit();
 	}
 	if (moonsActive == 1){
 		lun.drawMoon();
-	}
+	}*/
 	glPopMatrix();
 
 	//Mars, Orbits, Moons
@@ -301,14 +300,14 @@ void drawScene(void){
 	gluSphere(quadric, mar.radius, 20.0, 20.0);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
-	if (smallOrbitActive == 1){
+	/*if (smallOrbitActive == 1){
 		pho.drawSmallOrbit();
 		dei.drawSmallOrbit();
 	}
 	if (moonsActive == 1){
 		pho.drawMoon();
 		dei.drawMoon();
-	}
+	}*/
 	glPopMatrix();
 
 	//Jupiter, Orbits, Moons
@@ -332,7 +331,7 @@ void drawScene(void){
 	gluSphere(quadric, jup.radius, 20.0, 20.0);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
-	if (smallOrbitActive == 1){
+	/*if (smallOrbitActive == 1){
 		eur.drawSmallOrbit();
 		gan.drawSmallOrbit();
 		cal.drawSmallOrbit();
@@ -341,7 +340,7 @@ void drawScene(void){
 		eur.drawMoon();
 		gan.drawMoon();
 		cal.drawMoon();
-	}
+	}*/
 	glPopMatrix();
 
 	//Saturn, Orbit, Moon
@@ -371,12 +370,12 @@ void drawScene(void){
 	glutWireTorus(0.2, 6.0, 30.0, 30.0);
 	glutWireTorus(0.4, 5.0, 30.0, 30.0);
 	glPopMatrix();
-	if (smallOrbitActive == 1){
+	/*if (smallOrbitActive == 1){
 		tit.drawSmallOrbit();
 	}
 	if (moonsActive == 1){
 		tit.drawMoon();
-	}
+	}*/
 	glPopMatrix();
 
 	glColor3ub(255, 255, 255);		//FIXES SHADING ISSUE
@@ -402,12 +401,12 @@ void drawScene(void){
 	gluSphere(quadric, ura.radius, 20.0, 20.0);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
-	if (smallOrbitActive == 1){
+	/*if (smallOrbitActive == 1){
 		puc.drawSmallOrbit();
 	}
 	if (moonsActive == 1){
 		puc.drawMoon();
-	}
+	}*/
 	glPopMatrix();
 
 	//Neptune, Orbit, Moon
@@ -431,42 +430,14 @@ void drawScene(void){
 	gluSphere(quadric, nep.radius, 20.0, 20.0);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
-	if (smallOrbitActive == 1){
+	/*if (smallOrbitActive == 1){
 		tri.drawSmallOrbit();
 	}
 	if (moonsActive == 1){
 		tri.drawMoon();
-	}
+	}*/
 	glPopMatrix();
 
-	//Pluto, Orbit, Moon
-	glPushMatrix();
-	glRotatef(plu.orbit, 0.0, 1.0, 0.0);
-	glTranslatef(plu.distance, 0.0, 0.0);
-	if (labelsActive == 1){
-		glRasterPos3f(0.0, 3.0, 0.0);
-		glColor3ub(255, 255, 255);
-		writeBitmapString(GLUT_BITMAP_HELVETICA_12, "Pluto");
-	}
-	glPushMatrix();
-	glRotatef(plu.axisTilt, 1.0, 0.0, 0.0);
-	glRotatef(plu.axisAni, 0.0, 1.0, 0.0);
-	glRotatef(90.0, 1.0, 0.0, 0.0);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, pluTexture);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	gluQuadricTexture(quadric, 1);
-	gluSphere(quadric, plu.radius, 20.0, 20.0);
-	glDisable(GL_TEXTURE_2D);
-	glPopMatrix();
-	if (smallOrbitActive == 1){
-		nix.drawSmallOrbit();
-	}
-	if (moonsActive == 1){
-		nix.drawMoon();
-	}
-	glPopMatrix();
 
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
