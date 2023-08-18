@@ -48,10 +48,16 @@ Planet ven(1.5, 11, rand() % 360, 3.50, 177.0, 0);		//Venus
 Planet ear(2.0, 16, rand() % 360, 2.98, 23.44, 0);		//Earth
 Planet mar(1.2, 21, rand() % 360, 2.41, 25.00, 0);		//Mars
 //Planet jup(3.5, 28, 0, 1.31, 03.13, 0);		//Jupiter
-Planet jup(3.5, 28, rand() % 360, 1.31, 03.13, 0);		//Jupiter
-Planet sat(3.0, 37, rand() % 360, 0.97, 26.70, 0);		//Saturn
-Planet ura(2.5, 45.5, rand() % 360, 0.68, 97.77, 0);	//Uranus
-Planet nep(2.3, 53.6, rand() % 360, 0.54, 28.32, 0);	//Neptune
+//Planet jup(3.5, 28, rand() % 360, 1.31, 03.13, 0);		//Jupiter
+//Planet sat(3.0, 37, rand() % 360, 0.97, 26.70, 0);		//Saturn
+//Planet ura(2.5, 45.5, rand() % 360, 0.68, 97.77, 0);	//Uranus
+//Planet nep(2.3, 53.6, rand() % 360, 0.54, 28.32, 0);	//Neptune
+
+Planet jup(3.5, 30 , rand() % 360, 1.31, 03.13, 0);		//Jupiter
+Planet sat(3.0, 40 , rand() % 360, 0.97, 26.70, 0);		//Saturn
+Planet ura(2.5, 49.5 , rand() % 360, 0.68, 97.77, 0);	//Uranus
+Planet nep(2.3, 53.6 , rand() % 360, 0.54, 28.32, 0);	//Neptune
+
 //Planet plu(0.3, 59, 0, 0.47, 119.6, 0);		//Pluto
 //Planet lun(.40, 3, 0, 5.40, 0, 0);			//Luna     (Earth)
 //Planet pho(.20, 1.8, 0, 2.30, 0, 0);		//Phobos   (Mars)
