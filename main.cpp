@@ -80,7 +80,7 @@ int logoScene = 1;
 //float spotDirection[] = { 1.0, 0.0, 0.0 }; // Spotlight direction.
 //static float spotExponent = 1.0; // Spotlight exponent = attenuation factor.
 
-float lightPos[] = { 0, 0.0, -50, 1.0 }; // Spotlight position.
+float lightPos[] = { 0.0, 0.0, -50.0, 1.0 }; // Spotlight position.
 static float spotAngle = 180; // Spotlight cone half-angle.
 float spotDirection[] = { 0.0, 1.0, 0.0 }; // Spotlight direction.
 static float spotExponent = 1.0; // Spotlight exponent = attenuation factor.
@@ -492,12 +492,13 @@ void drawScene(void){
 }
 
 void drawScenesInOrder(void){
-	if (logoScene == 1){
+	/*if (logoScene == 1){
 		drawLogoScene();
 	}
 	else {
 		drawScene();
-	}
+	}*/
+	drawScene();
 }
 
 void resize(int w, int h){
