@@ -256,12 +256,14 @@ void drawScene(void){
 	glRotatef(sun.axisAni, 0.0, 1.0, 0.0);
 	glRotatef(90.0, 1.0, 0.0, 0.0);
 	glEnable(GL_TEXTURE_2D);
+	//glEnable(GL_TEXTURE_3D);
 	glBindTexture(GL_TEXTURE_2D, sunTexture);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	gluQuadricTexture(quadric, 1);
-	gluSphere(quadric, sun.radius, 20.0, 20.0);
+	gluSphere(quadric, sun.radius, 20.0, 20.0); // sun is divided into 20 vertical and 20 horizontal parts for smooth rendering
 	glDisable(GL_TEXTURE_2D);
+	//glDisable(GL_TEXTURE_3D);
 	glPopMatrix();
 	glPopMatrix();
 
@@ -639,9 +641,9 @@ void keyInput(unsigned char key, int x, int y){
 	switch (key){
 	case 27: exit(0); break;
 	case ' ': if (isAnimate) isAnimate = 0; else{ isAnimate = 1; animate(1); } break;
-	/*case 'o': if (smallOrbitActive) smallOrbitActive = 0; else smallOrbitActive = 1; glutPostRedisplay(); break;
+	//case 'o': if (smallOrbitActive) smallOrbitActive = 0; else smallOrbitActive = 1; glutPostRedisplay(); break;
 	case 'O': if (bigOrbitActive) bigOrbitActive = 0; else bigOrbitActive = 1; glutPostRedisplay(); break;
-	case 'm': if (moonsActive) moonsActive = 0; else moonsActive = 1; glutPostRedisplay(); break;
+	/*case 'm': if (moonsActive) moonsActive = 0; else moonsActive = 1; glutPostRedisplay(); break;
 	case 'M': if (moonsActive) moonsActive = 0; else moonsActive = 1; glutPostRedisplay(); break;*/
 	case 'l': if (labelsActive) labelsActive = 0; else labelsActive = 1; glutPostRedisplay(); break;
 	case 'L': if (labelsActive) labelsActive = 0; else labelsActive = 1; glutPostRedisplay(); break;
@@ -652,10 +654,10 @@ void keyInput(unsigned char key, int x, int y){
 }
 
 void intructions(void){
-	cout << "SPACE to play/pause the simulation." << endl;
+	cout << "Press SPACE to play/pause the simulation." << endl;
 	cout << "ESC to exit the simulation." << endl;
-	/*cout << "O to show/hide Big Orbital Trails." << endl;
-	cout << "o to show/hide Small Orbital Trails." << endl;
+	cout << "O to show/hide Big Orbital Trails." << endl;
+	/*cout << "o to show/hide Small Orbital Trails." << endl;
 	cout << "M/m to show/hide Moons." << endl;*/
 	cout << "L/l to show/hide labels" << endl;
 	//cout << "1, 2 and 3 to change camera angles." << endl;
