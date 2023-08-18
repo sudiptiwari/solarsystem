@@ -160,19 +160,42 @@ void setup(void){
 }
 
 void orbitalTrails(void){
-	//glPushMatrix();
-	//glColor3ub(255, 255, 255);
-	//glTranslatef(0.0, 0.0, 0.0);
-	///*glRotatef(90.0, 1.0, 0.0, 0.0);
-	//glutWireTorus(0.001, mer.distance, 100.0, 100.0);
-	//glutWireTorus(0.001, ven.distance, 100.0, 100.0);
-	//glutWireTorus(0.001, ear.distance, 100.0, 100.0);
-	//glutWireTorus(0.001, mar.distance, 100.0, 100.0);
-	//glutWireTorus(0.001, jup.distance, 100.0, 100.0);
-	//glutWireTorus(0.001, sat.distance, 100.0, 100.0);
-	//glutWireTorus(0.001, ura.distance, 100.0, 100.0);
-	//glutWireTorus(0.001, nep.distance, 100.0, 100.0);*/
-	//glPopMatrix();
+	glPushMatrix();
+	glColor3ub(255, 255, 255);
+	glTranslatef(0.0, 0.0, 0.0);
+	glRotatef(90.0, 1.0, 0.0, 0.0);
+	glutWireTorus(0.001, mer.distance, 100.0, 100.0);
+	glutWireTorus(0.001, ven.distance, 100.0, 100.0);
+	glutWireTorus(0.001, ear.distance, 100.0, 100.0);
+	glutWireTorus(0.001, mar.distance, 100.0, 100.0);
+	glutWireTorus(0.001, jup.distance, 100.0, 100.0);
+	glutWireTorus(0.001, sat.distance, 100.0, 100.0);
+	glutWireTorus(0.001, ura.distance, 100.0, 100.0);
+	glutWireTorus(0.001, nep.distance, 100.0, 100.0);
+	glPopMatrix();
+}
+
+void asteroidBelt(void) {
+	glPushMatrix();
+	glColor3ub(100, 100, 100);
+	glTranslatef(0.0, 0.0, 0.0);
+	glRotatef(90.0, 1.0, 0.0, 0.0);
+	/*for (int i = 2.0; i < 20.0; i+2) {
+		glutWireTorus(0.1, mar.distance + 2.0 + (float)i/10, 100.0, 100.0);
+	}*/
+	glutWireTorus(0.1, mar.distance + 2.0, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 2.2, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 2.4, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 2.6, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 2.8, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 3.0, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 3.2, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 3.4, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 3.6, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 3.8, 100.0, 100.0);
+	glutWireTorus(0.1, mar.distance + 4.0, 100.0, 100.0);
+	glColor3ub(255, 255, 255);
+	glPopMatrix();
 }
 
 void drawLogoScene(void){
@@ -337,6 +360,30 @@ void drawScene(void){
 	}*/
 	glPopMatrix();
 
+	// Asteroid Belt
+	asteroidBelt();
+	//glPushMatrix();
+	//glColor3ub(100, 100, 100);
+	//glTranslatef(0.0, 0.0, 0.0);
+	//glRotatef(90.0, 1.0, 0.0, 0.0);
+	///*for (int i = 2.0; i < 20.0; i+2) {
+	//	glutWireTorus(0.1, mar.distance + 2.0 + (float)i/10, 100.0, 100.0);
+	//}*/
+	//glutWireTorus(0.1, mar.distance + 2.0, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 2.2, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 2.4, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 2.6, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 2.8, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 3.0, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 3.2, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 3.4, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 3.6, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 3.8, 100.0, 100.0);
+	//glutWireTorus(0.1, mar.distance + 4.0, 100.0, 100.0);
+	//glColor3ub(255, 255, 255);
+	//glPopMatrix();
+
+	
 	//Jupiter, Orbits, Moons
 	glPushMatrix();
 	glRotatef(jup.orbit, 0.0, 1.0, 0.0);
