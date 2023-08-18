@@ -204,6 +204,48 @@ void asteroidBelt(void) {
 	glPopMatrix();
 }
 
+void kuiperBelt(void) {
+	glPushMatrix();
+	glColor3ub(100, 100, 100);
+	glTranslatef(0.0, 0.0, 0.0);
+	glRotatef(90.0, 1.0, 0.0, 0.0);
+	/*for (int i = 2.0; i < 20.0; i+2) {
+		glutWireTorus(0.1, mar.distance + 2.0 + (float)i/10, 100.0, 100.0);
+	}*/
+	glutWireTorus(0.2, nep.distance + 3.0, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 3.2, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 3.4, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 3.6, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 3.8, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 4.0, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 4.2, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 4.4, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 4.6, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 4.8, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 5.0, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 5.2, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 5.4, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 5.6, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 5.8, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 3.0, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2  *3.2, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 3.4, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 3.6, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 3.8, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 4.0, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 4.2, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 4.4, 100.0, 100.0);
+	/*glutWireTorus(0.2, nep.distance + 2 * 4.6, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 4.8, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 5.0, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 5.2, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 5.4, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 5.6, 100.0, 100.0);
+	glutWireTorus(0.2, nep.distance + 2 * 5.8, 100.0, 100.0);*/
+	glColor3ub(255, 255, 255);
+	glPopMatrix();
+}
+
 void drawLogoScene(void){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
@@ -529,6 +571,8 @@ void drawScene(void){
 		tri.drawMoon();
 	}*/
 	glPopMatrix();
+
+	kuiperBelt();
 
 
 	glPushMatrix();
