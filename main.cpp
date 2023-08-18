@@ -217,16 +217,21 @@ void drawLogoScene(void){
 	glutSwapBuffers();
 }
 
+float x_zoom = 0;
+float y_zoom = zoom;
+float z_zoom = 50.0;
+
 void drawScene(void){
 	frameCount++;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
-	if (changeCamera == 0)gluLookAt(0.0, zoom, 50.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	//if (changeCamera == 0)gluLookAt(0.0, zoom, 50.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	if (changeCamera == 0)gluLookAt(x_zoom, y_zoom, z_zoom, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	//if (changeCamera == 1)gluLookAt(0.0, 0.0, zoom, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	//if (changeCamera == 2)gluLookAt(0.0, zoom, 0.00001, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
-	//if (bigOrbitActive == 1) orbitalTrails();
+	if (bigOrbitActive == 1) orbitalTrails();
 
 	GLUquadric *quadric;
 	quadric = gluNewQuadric();
@@ -611,8 +616,11 @@ void mouseControl(int button, int state, int x, int y)
 
 void mouseWheel(int wheel, int direction, int x, int y)
 {
-	if (direction > 0 && zoom < 100) zoom++;
-	if (direction < 0 && zoom > -75) zoom--;
+	/*if (direction > 0 && zoom < 100) zoom++;
+	if (direction < 0 && zoom > -75) zoom--;*/
+
+	if (direction > 0 && zoom < 100) x_zoom++;
+	if (direction < 0 && zoom > -75) x_zoom--;
 	glutPostRedisplay();
 }
 
