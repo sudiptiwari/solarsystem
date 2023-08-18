@@ -452,8 +452,13 @@ void drawScene(void){
 	glPushMatrix();
 	glColor3ub(158, 145, 137);
 	glRotatef(-63.0, 1.0, 0.0, 0.0);
-	glutWireTorus(0.2, 6.0, 30.0, 30.0); // for rings of Saturn
-	glutWireTorus(0.4, 5.0, 30.0, 30.0);
+	//glutWireTorus(0.2, 6.0, 30.0, 30.0); // for rings of Saturn
+	//glutWireTorus(0.4, 5.0, 30.0, 30.0);
+	glutWireTorus(0.2, 4.0, 30.0, 30.0); // for rings of Saturn (radiusOfThickness, radiusOfTorusFromCenter, fineDetails, fineDetails)
+	glutWireTorus(0.5, 4.5, 30.0, 30.0);
+	glutWireTorus(0.5, 5.0, 30.0, 30.0);
+	glutWireTorus(0.4, 3.0, 30.0, 30.0);
+
 	glPopMatrix();
 	/*if (smallOrbitActive == 1){
 		tit.drawSmallOrbit();
