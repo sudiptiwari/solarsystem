@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib> // for rand() function for random number generator in orbit position
+#include <cmath>
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <GL/glext.h>
@@ -20,15 +21,15 @@ public:
 		axisAni = _axisAni;
 	}
 
-	/*void drawSmallOrbit(void){
+	void drawSmallOrbit(void){
 		glPushMatrix();
 		glColor3ub(255, 255, 255);
 		glRotatef(90.0, 1.0, 0.0, 0.0);
 		glutWireTorus(0.001, distance, 100.0, 100.0);
 		glPopMatrix();
-	}*/
+	}
 
-	/*void drawMoon(void){
+	void drawMoon(void){
 		GLUquadricObj *quadric;
 		quadric = gluNewQuadric();
 		glPushMatrix();
@@ -37,7 +38,7 @@ public:
 		glTranslatef(distance, 0.0, 0.0);
 		gluSphere(quadric, radius, 20.0, 20.0);
 		glPopMatrix();
-	}*/
+	}
 
 };
 
@@ -59,7 +60,7 @@ Planet ura(2.5, 49.5 , rand() % 360, 0.68, 97.77, 0);	//Uranus
 Planet nep(2.3, 53.6 , rand() % 360, 0.54, 28.32, 0);	//Neptune
 
 //Planet plu(0.3, 59, 0, 0.47, 119.6, 0);		//Pluto
-//Planet lun(.40, 3, 0, 5.40, 0, 0);			//Luna     (Earth)
+Planet lun(.40, 3, 0, 5.40, 0, 0);			//Luna     (Earth)
 //Planet pho(.20, 1.8, 0, 2.30, 0, 0);		//Phobos   (Mars)
 //Planet dei(.24, 2.4, 0, 3.60, 0, 0);		//Deimos   (Mars)
 //Planet eur(.24, 4, 0, 4.40, 0, 0);			//Europa   (Jupiter)
@@ -72,8 +73,8 @@ Planet nep(2.3, 53.6 , rand() % 360, 0.54, 28.32, 0);	//Neptune
 
 int isAnimate = 0;
 int bigOrbitActive = 1;
-//int smallOrbitActive = 1;
-//int moonsActive = 1;
+int smallOrbitActive = 0;
+int moonsActive = 1;
 int changeCamera = 0;
 int frameCount = 0;
 int labelsActive = 0;
@@ -100,7 +101,7 @@ GLuint loadTexture(Image* image) {
 	return textureId;
 }
 
-GLuint sunTexture, merTexture, venTexture, earTexture, marTexture, jupTexture, satTexture, uraTexture, nepTexture, pluTexture, staTexture, logTexture;
+GLuint sunTexture, merTexture, venTexture, earTexture, marTexture, jupTexture, satTexture, uraTexture, nepTexture, pluTexture, staTexture, logTexture, kriTexture;
 
 void writeBitmapString(void *font, char *string)
 {
@@ -126,6 +127,7 @@ void setup(void){
 	Image* ura = loadBMP("uranus.bmp");		uraTexture = loadTexture(ura);		delete ura;
 	Image* nep = loadBMP("neptune.bmp");	nepTexture = loadTexture(nep);		delete nep;
 	Image* log = loadBMP("logo.bmp");		logTexture = loadTexture(log);		delete log;
+	//Image* kri = loadBMP("shrikrishna.bmp"); kriTexture = loadTexture(kri);     delete kri;
 
 	//LIGHTING SETUP
 	//glEnable(GL_LIGHTING);
@@ -150,6 +152,7 @@ void setup(void){
 	glEnable(GL_LIGHTING);
 	float lightAmb[] = { 0.0, 0.0, 0.0, 1.0 }; // ambient lighting is set to full black
 	float lightDifAndSpec[] = { 1.0, 1.0, 1.0, 1.0 }; // source lighting is set to full white
+	//float globAmb[] = { 0.1, 0.1, 0.1, 1.0 }; // how much illumination when there is no light at all
 	float globAmb[] = { 0.1, 0.1, 0.1, 1.0 }; // how much illumination when there is no light at all
 	glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmb);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDifAndSpec);
@@ -269,6 +272,24 @@ float x_zoom = 0;
 float y_zoom = zoom;
 float z_zoom = 50.0;
 
+void ShreeKrishna(void) {
+	glPushMatrix();
+	glColor3ub(214, 91, 91);
+	glTranslatef(80.0, 10.0, 25.0);
+	glRotatef(90.0, 0.0, 1.0, 0.0); // rotate 90 degrees about Y-axis
+	glRotatef(-23.4985, 0.0, 1.0, 0.0);
+	glRotatef(23.985, 0.0, 0.0, 1.0);
+	glScalef(1.0, 0.8, 2.0);
+
+	glutSolidTorus(10.0, 50.0, 50.0, 50.0);
+	glColor3ub(255, 255, 255);
+	glutSolidCube(10.0);
+
+	glPopMatrix();
+}
+
+
+
 void drawScene(void){
 	frameCount++;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -276,6 +297,7 @@ void drawScene(void){
 
 	//if (changeCamera == 0)gluLookAt(0.0, zoom, 50.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	if (changeCamera == 0)gluLookAt(x_zoom, y_zoom, z_zoom, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+	cout << x_zoom << ", " << y_zoom << ", " << z_zoom << endl;
 	//if (changeCamera == 1)gluLookAt(0.0, 0.0, zoom, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 	//if (changeCamera == 2)gluLookAt(0.0, zoom, 0.00001, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
@@ -376,12 +398,12 @@ void drawScene(void){
 	gluSphere(quadric, ear.radius, 20.0, 20.0);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
-	/*if (smallOrbitActive == 1){
+	if (smallOrbitActive == 1){
 		lun.drawSmallOrbit();
 	}
 	if (moonsActive == 1){
 		lun.drawMoon();
-	}*/
+	}
 	glPopMatrix();
 
 	//Mars, Orbits, Moons
@@ -571,6 +593,8 @@ void drawScene(void){
 		tri.drawMoon();
 	}*/
 	glPopMatrix();
+	
+	ShreeKrishna();
 
 	kuiperBelt();
 
@@ -685,10 +709,10 @@ void keyInput(unsigned char key, int x, int y){
 	switch (key){
 	case 27: exit(0); break;
 	case ' ': if (isAnimate) isAnimate = 0; else{ isAnimate = 1; animate(1); } break;
-	//case 'o': if (smallOrbitActive) smallOrbitActive = 0; else smallOrbitActive = 1; glutPostRedisplay(); break;
+	case 'o': if (smallOrbitActive) smallOrbitActive = 0; else smallOrbitActive = 1; glutPostRedisplay(); break;
 	case 'O': if (bigOrbitActive) bigOrbitActive = 0; else bigOrbitActive = 1; glutPostRedisplay(); break;
-	/*case 'm': if (moonsActive) moonsActive = 0; else moonsActive = 1; glutPostRedisplay(); break;
-	case 'M': if (moonsActive) moonsActive = 0; else moonsActive = 1; glutPostRedisplay(); break;*/
+	case 'm': if (moonsActive) moonsActive = 0; else moonsActive = 1; glutPostRedisplay(); break;
+	case 'M': if (moonsActive) moonsActive = 0; else moonsActive = 1; glutPostRedisplay(); break;
 	case 'l': if (labelsActive) labelsActive = 0; else labelsActive = 1; glutPostRedisplay(); break;
 	case 'L': if (labelsActive) labelsActive = 0; else labelsActive = 1; glutPostRedisplay(); break;
 	case '1': changeCamera = 0; glutPostRedisplay(); break;
@@ -701,11 +725,12 @@ void intructions(void){
 	cout << "Press SPACE to play/pause the simulation." << endl;
 	cout << "ESC to exit the simulation." << endl;
 	cout << "O to show/hide Big Orbital Trails." << endl;
-	/*cout << "o to show/hide Small Orbital Trails." << endl;
-	cout << "M/m to show/hide Moons." << endl;*/
+	cout << "o to show/hide Small Orbital Trails." << endl;
+	cout << "M/m to show/hide Moons." << endl; 
 	cout << "L/l to show/hide labels" << endl;
 	//cout << "1, 2 and 3 to change camera angles." << endl;
 	cout << "Scroll to change camera movement" << endl;
+	cout << x_zoom <<", " << y_zoom << ", " << z_zoom << endl;
 }
 
 int main(int argc, char **argv){
